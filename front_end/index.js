@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 class App extends React.Component {
   render() {
     return(
-      <div><p>hello,react</p></div>
+      <div><p>hello,reactaaaa</p></div>
     )
   }
 }
