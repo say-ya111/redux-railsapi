@@ -1,14 +1,23 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import App from './App'
+import { Provider } from "react-redux";
+import { store } from './modules/Store'
 
-class App extends React.Component {
+class Root extends React.Component {
   render() {
     return(
-      <div><p>hello,reactaaaa</p></div>
+      <div>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </div>
     )
   }
 }
 
+import { fetchUser } from './modules/ActionCreater'
+store.dispatch(fetchUser('test@kmail.com', 'aaaaa'))
 
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<Root />, document.getElementById('app'));
