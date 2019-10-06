@@ -13,3 +13,14 @@ React+Redux+TypeScript課題の環境構築済レポジトリ
 `npm run build`
 ### フロントエンドサーバー起動
 `npm start`
+
+expressインストール
+npm install express
+
+index.js内に
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+と、
+ReactDOM.render(<App />, document.getElementById('app'));
+でレンダリング(既に記入済み
+  )
