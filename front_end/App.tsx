@@ -1,11 +1,22 @@
-import * as React from 'react';
+import * as React from 'react'
+import { History } from 'history'
+import SignIn from './containers/Signin'
+import { BrowserRouter, Route } from "react-router-dom";
+import { ConnectedRouter } from 'connected-react-router'
 
-class App extends React.Component {
-  render() {
-    return(
-      <div><p>hello,react</p></div>
-    )
-  }
+type AppProps = {
+  history: History;
 }
+
+const App = ({ history }: AppProps) => {
+    return(
+      <ConnectedRouter history={history}>
+        <BrowserRouter>
+          <Route exact path='/signin' component={SignIn} />
+        </BrowserRouter>
+      </ConnectedRouter>
+    )
+}
+
 
 export default App

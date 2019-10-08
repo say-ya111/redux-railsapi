@@ -1,5 +1,7 @@
 import { Action, LOGIN } from './ActionTypes'
-import { Reducer, combineReducers } from 'redux';
+import { Reducer, combineReducers } from 'redux'
+import { History } from 'history'
+import { connectRouter } from 'connected-react-router'
 
 type userReducerState = {
   email: string,
@@ -20,7 +22,8 @@ export const userReducer: Reducer<userReducerState, Action> = (state = initialSt
   }
 }
 
-export const rootReducer = combineReducers({
+export const rootReducer = (history: History) => combineReducers({
+  router: connectRouter(history),
   userReducer
 })
 
