@@ -1,8 +1,9 @@
 import * as React from 'react'
 import { History } from 'history'
-import SignIn from './containers/Signin'
-import { BrowserRouter, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { ConnectedRouter } from 'connected-react-router'
+import SignIn from './containers/Signin'
+import CountHeader from './containers/counter/Header'
 
 type AppProps = {
   history: History;
@@ -11,9 +12,10 @@ type AppProps = {
 const App = ({ history }: AppProps) => {
     return(
       <ConnectedRouter history={history}>
-        <BrowserRouter>
+        <Switch>
           <Route exact path='/signin' component={SignIn} />
-        </BrowserRouter>
+          <Route path='/count' component={CountHeader} />
+        </Switch>
       </ConnectedRouter>
     )
 }

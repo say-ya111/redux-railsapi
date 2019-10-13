@@ -6,9 +6,10 @@ import { store, history } from './modules/Store'
 
 
 
-import { fetchUser } from './modules/ActionCreater'
-store.dispatch(fetchUser('test@kmail.com', 'aaaaa'))
+// import { logInIfFetchUser } from './modules/ActionCreater'
+// store.dispatch(logInIfFetchUser('test@kmail.com', 'aaaaa'))
 
+console.log(store.getState())
 
 ReactDOM.render(
   <Provider store={store}>

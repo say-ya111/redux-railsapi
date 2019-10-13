@@ -1,30 +1,37 @@
 import { Action, LOGIN } from './ActionTypes'
-import { Reducer, combineReducers } from 'redux'
+import { combineReducers } from 'redux'
 import { History } from 'history'
 import { connectRouter } from 'connected-react-router'
 
 type userReducerState = {
-  email: string,
-  password: string
+  name: string,
+  isLoggedIn: boolean
 }
 
 const initialState = {
-  email: 'example.com',
-  password: 'password'
+  name: '',
+  isLoggedIn: false
 }
 
-export const userReducer: Reducer<userReducerState, Action> = (state = initialState, action) => {
+export function userReducer(state = initialState, action: Action) : userReducerState {
   switch(action.type) {
     case LOGIN:
-      console.log(action.payload)
+      return {
+        name: action.name,
+        isLoggedIn: true
+      }
     default:
       return state;
   }
 }
 
+export type userReducer = typeof userReducer
+
 export const rootReducer = (history: History) => combineReducers({
-  router: connectRouter(history),
-  userReducer
+  user: userReducer,
+  router: connectRouter(history)
 })
+
+
 
 export type AppState = ReturnType<typeof rootReducer>
