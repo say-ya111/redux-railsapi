@@ -1,4 +1,4 @@
-import { Action, LOGIN } from './ActionTypes'
+import { Action, LOGIN, INCREMENT } from './ActionTypes'
 import { combineReducers } from 'redux'
 import { History } from 'history'
 import { connectRouter } from 'connected-react-router'
@@ -9,11 +9,13 @@ type userReducerState = {
 }
 
 const initialState = {
-  name: '',
-  isLoggedIn: false
+  userReducer: {
+    name: '',
+    isLoggedIn: false},
+  counter: 0
 }
 
-export function userReducer(state = initialState, action: Action) : userReducerState {
+export function userReducer(state = initialState.userReducer, action: Action): userReducerState {
   switch(action.type) {
     case LOGIN:
       return {
@@ -25,10 +27,20 @@ export function userReducer(state = initialState, action: Action) : userReducerS
   }
 }
 
+export function counter(state = initialState.counter, action: Action): number{
+  switch(action.type) {
+    case INCREMENT:
+      return state += 1
+    default:
+      return state
+  }
+}
+
 export type userReducer = typeof userReducer
 
 export const rootReducer = (history: History) => combineReducers({
   user: userReducer,
+  counter: counter,
   router: connectRouter(history)
 })
 

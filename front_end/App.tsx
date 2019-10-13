@@ -3,7 +3,7 @@ import { History } from 'history'
 import { Switch, Route } from "react-router-dom";
 import { ConnectedRouter } from 'connected-react-router'
 import SignIn from './containers/Signin'
-import CountHeader from './containers/counter/Header'
+import Count from './containers/counter/counterBox/CountBox'
 
 type AppProps = {
   history: History;
@@ -14,7 +14,7 @@ const App = ({ history }: AppProps) => {
       <ConnectedRouter history={history}>
         <Switch>
           <Route exact path='/signin' component={SignIn} />
-          <Route path='/count' component={CountHeader} />
+          <Route path='/count' component={Count} />
         </Switch>
       </ConnectedRouter>
     )

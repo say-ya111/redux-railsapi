@@ -2,7 +2,7 @@ import axios from 'axios'
 import { Action } from 'redux'
 import { ThunkAction } from "redux-thunk"
 import { push } from 'connected-react-router'
-import { LOGIN } from './ActionTypes'
+import { LOGIN, INCREMENT } from './ActionTypes'
 import { AppState } from './Reducers'
 
 export function logIn(payload: string) {
@@ -22,4 +22,10 @@ export const logInIfFetchUser = (
       dispatch(logIn(response.data[0].name))
       dispatch(push('/count'))
     })
+}
+
+export function increment() {
+  return {
+    type: 'INCREMENT' as  typeof INCREMENT
+  }
 }

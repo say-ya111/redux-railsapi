@@ -31,8 +31,6 @@ class SignIn extends React.Component<SignInProps> {
 }
 
 
-const mapStateToProps = (state: AppState) => ({
-  // name: state.user.name
-})
+const mapStateToProps = (state: AppState) => ({})
 
 export default connect(mapStateToProps,{ logInIfFetchUser })(SignIn)

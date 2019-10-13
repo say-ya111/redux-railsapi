@@ -1,4 +1,6 @@
-import { logIn } from './ActionCreater'
+import { logIn, increment } from './ActionCreater'
 
 export const LOGIN = 'LOGIN'
-export type Action = ReturnType<typeof logIn>
+export const INCREMENT = 'INCREMENT'
+
+export type Action = ReturnType<typeof logIn | typeof increment>

@@ -5,9 +5,13 @@ import App from './App'
 import { store, history } from './modules/Store'
 
 
-
+// **test dispatch actions** //
 // import { logInIfFetchUser } from './modules/ActionCreater'
 // store.dispatch(logInIfFetchUser('test@kmail.com', 'aaaaa'))
+import { increment } from './modules/ActionCreater'
+store.dispatch(increment())
+store.dispatch(increment())
+
 
 console.log(store.getState())
 
