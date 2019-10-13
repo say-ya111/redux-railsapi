@@ -1,17 +1,25 @@
 import * as React from 'react'
+import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
-import CountHeader from '../Header'
 import { AppState } from '../../../modules/Reducers'
+import { CountHeader } from '../Header'
+import { AddButton } from './Add'
+import { increment } from '../../../modules/ActionCreater'
+
 
 type CountProps = {
   name: string,
-  currentNumber: number
+  currentNumber: number,
+  increment: any
 }
 
 class Count extends React.Component<CountProps> {
   render() {
     return (
-      <CountHeader userName={this.props.name} number={this.props.currentNumber}/>
+      <div>
+        <CountHeader userName={this.props.name} number={this.props.currentNumber} />
+        <AddButton incrementAction={this.props.increment}/>
+      </div>
     )
   }
 }
@@ -21,4 +29,8 @@ const mapStateToProps = (state: AppState) => ({
   currentNumber: state.counter
 })
 
-export default connect(mapStateToProps)(Count)
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  increment: () => {dispatch(increment())}
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Count)

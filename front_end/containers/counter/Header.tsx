@@ -6,7 +6,7 @@ type CountProps = {
   number: number
 }
 
-const CountHeader: React.SFC<CountProps> = props => {
+export const CountHeader: React.SFC<CountProps> = props => {
   return (
     <div>
     <p>count number: {props.number}</p>
@@ -14,5 +14,3 @@ const CountHeader: React.SFC<CountProps> = props => {
     </div>
   )
 }
-
-export default CountHeader
