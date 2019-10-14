@@ -15,18 +15,32 @@ type CountProps = {
   decrement: typeof decrement
 }
 
+type CountState = {
+  mode: 'increment' | 'decrement'
+}
 
-class Count extends React.Component<CountProps> {
-  state = {
-    mode: 'increment'
+class Count extends React.Component<CountProps, CountState> {
+  constructor(props: CountProps) {
+    super(props)
+    this.state = {
+      mode: 'increment'
+    }
+  }
+
+  switchMode() {
+    if(this.state.mode === 'increment') {
+      this.setState({mode: 'decrement'})
+    } else {
+      this.setState({mode: 'increment'})
+    }
   }
 
   render() {
     let renderButton;
     if(this.state.mode === 'increment') {
-      renderButton = <AddButton incrementAction={this.props.increment}/>
+      renderButton = <AddButton incrementAction={this.props.increment} switchFunction={() => this.switchMode()} />
     } else {
-      renderButton = <ReduceButton decrementAction={this.props.decrement}/>
+      renderButton = <ReduceButton decrementAction={this.props.decrement} switchFunction={() => this.switchMode()} />
     }
     return (
       <div>
