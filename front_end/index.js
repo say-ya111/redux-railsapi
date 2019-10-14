@@ -13,6 +13,12 @@ import { store, history } from './modules/Store'
 // store.dispatch(increment())
 // store.dispatch(increment())
 
+// import { decrement } from './modules/ActionCreater'
+// store.dispatch(decrement())
+// store.dispatch(decrement())
+
+
+
 
 console.log(store.getState())
 

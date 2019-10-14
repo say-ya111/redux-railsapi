@@ -1,4 +1,4 @@
-import { Action, LOGIN, INCREMENT } from './ActionTypes'
+import { Action, LOGIN, INCREMENT, DECREMENT } from './ActionTypes'
 import { combineReducers } from 'redux'
 import { History } from 'history'
 import { connectRouter } from 'connected-react-router'
@@ -31,6 +31,8 @@ export function counter(state = initialState.counter, action: Action): number{
   switch(action.type) {
     case INCREMENT:
       return state += 1
+    case DECREMENT:
+      return state -= 1
     default:
       return state
   }

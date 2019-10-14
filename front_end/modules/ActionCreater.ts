@@ -2,16 +2,17 @@ import axios from 'axios'
 import { Action } from 'redux'
 import { ThunkAction } from "redux-thunk"
 import { push } from 'connected-react-router'
-import { LOGIN, INCREMENT } from './ActionTypes'
+import { LOGIN, INCREMENT, DECREMENT } from './ActionTypes'
 import { AppState } from './Reducers'
 
+
+//user
 export function logIn(payload: string) {
   return {
     type: 'LOGIN' as typeof LOGIN,
     name: payload
   }
 }
-
 
 export const logInIfFetchUser = (
   email: string,
@@ -24,8 +25,15 @@ export const logInIfFetchUser = (
     })
 }
 
+//counter
 export function increment() {
   return {
     type: 'INCREMENT' as  typeof INCREMENT
+  }
+}
+
+export function decrement() {
+  return {
+    type: 'DECREMENT' as typeof DECREMENT
   }
 }
