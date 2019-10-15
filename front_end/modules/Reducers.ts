@@ -3,19 +3,26 @@ import { combineReducers } from 'redux'
 import { History } from 'history'
 import { connectRouter } from 'connected-react-router'
 
-type userReducerState = {
+
+const initialState = {
+  userState: {
+    name: '',
+    isLoggedIn: false},
+  counterState: [
+    {
+      number: 0,
+      timeStamp: new Date,
+      action: null as any
+    }
+  ]
+}
+
+type userReducerType = {
   name: string,
   isLoggedIn: boolean
 }
 
-const initialState = {
-  userReducer: {
-    name: '',
-    isLoggedIn: false},
-  counter: 0
-}
-
-export function userReducer(state = initialState.userReducer, action: Action): userReducerState {
+export function userReducer(state = initialState.userState, action: Action): userReducerType {
   switch(action.type) {
     case LOGIN:
       return {
@@ -27,25 +34,35 @@ export function userReducer(state = initialState.userReducer, action: Action): u
   }
 }
 
-export function counter(state = initialState.counter, action: Action): number{
+export type CounterType = {
+  number: number,
+  timeStamp: Date,
+  action: 'increment' | 'decrement' | null
+}
+
+export function counter(state = initialState.counterState, action: Action): Array<CounterType>{
   switch(action.type) {
     case INCREMENT:
-      return state += 1
+      return [...state, {
+        number: state[state.length - 1].number += 1,
+        timeStamp: new Date,
+        action: 'increment'
+      }]
     case DECREMENT:
-      return state -= 1
+      return [...state, {
+        number: state[state.length - 1].number -= 1,
+        timeStamp: new Date,
+        action: 'decrement'
+      }]
     default:
       return state
   }
 }
-
-export type userReducer = typeof userReducer
 
 export const rootReducer = (history: History) => combineReducers({
   user: userReducer,
   counter: counter,
   router: connectRouter(history)
 })
-
-
 
 export type AppState = ReturnType<typeof rootReducer>

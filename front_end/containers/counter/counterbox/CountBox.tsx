@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { NavLink } from "react-router-dom";
-// import { AppState } from '../../../modules/Reducers'
+import { /*AppState,*/ CounterType } from '../../../modules/Reducers'
 import { CountHeader } from '../Header'
 import { AddButton } from './Add'
 import { ReduceButton } from './Reduce'
@@ -11,7 +11,7 @@ import { increment, decrement } from '../../../modules/ActionCreater'
 
 type CountProps = {
   name: string,
-  currentNumber: number,
+  counterState: Array<CounterType>,
   path: string
   increment: typeof increment,
   decrement: typeof decrement
@@ -39,15 +39,18 @@ class Count extends React.Component<CountProps, CountState> {
 
   render() {
     let renderButton;
+
     if(this.state.mode === 'increment') {
       renderButton = <AddButton incrementAction={this.props.increment} switchFunction={() => this.switchMode()} />
     } else {
       renderButton = <ReduceButton decrementAction={this.props.decrement} switchFunction={() => this.switchMode()} />
     }
+
     return (
-      <div>
-        <CountHeader userName={this.props.name} number={this.props.currentNumber} />
+      <div style={{whiteSpace: 'pre-line'}}>
+        <CountHeader userName={this.props.name} number={this.props.counterState[this.props.counterState.length - 1].number} />
         {renderButton}
+        {'\n'}
         <NavLink to='/history'>検索履歴一覧</NavLink>
       </div>
     )
@@ -56,7 +59,7 @@ class Count extends React.Component<CountProps, CountState> {
 
 const mapStateToProps = (state: any) => ({
   name: state.user.name,
-  currentNumber: state.counter
+  counterState: state.counter
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

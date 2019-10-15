@@ -1,12 +1,12 @@
 import * as React from 'react'
 
 
-type CountProps = {
+type CountHeaderProps = {
   userName: string,
-  number: number
+  number: any
 }
 
-export const CountHeader: React.SFC<CountProps> = props => {
+export const CountHeader: React.SFC<CountHeaderProps> = props => {
   return (
     <div>
     <p>count number: {props.number}</p>
