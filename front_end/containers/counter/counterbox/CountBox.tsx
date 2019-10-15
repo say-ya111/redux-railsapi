@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
-import { AppState } from '../../../modules/Reducers'
+import { NavLink } from "react-router-dom";
+// import { AppState } from '../../../modules/Reducers'
 import { CountHeader } from '../Header'
 import { AddButton } from './Add'
 import { ReduceButton } from './Reduce'
@@ -11,6 +12,7 @@ import { increment, decrement } from '../../../modules/ActionCreater'
 type CountProps = {
   name: string,
   currentNumber: number,
+  path: string
   increment: typeof increment,
   decrement: typeof decrement
 }
@@ -46,12 +48,13 @@ class Count extends React.Component<CountProps, CountState> {
       <div>
         <CountHeader userName={this.props.name} number={this.props.currentNumber} />
         {renderButton}
+        <NavLink to='/history'>検索履歴一覧</NavLink>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state: AppState) => ({
+const mapStateToProps = (state: any) => ({
   name: state.user.name,
   currentNumber: state.counter
 })

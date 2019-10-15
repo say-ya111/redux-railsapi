@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux'
 import { logInIfFetchUser } from '../modules/ActionCreater'
-import { AppState } from '../modules/Reducers'
 
 
 type SignInProps = {
@@ -31,6 +30,6 @@ class SignIn extends React.Component<SignInProps> {
 }
 
 
-const mapStateToProps = (state: AppState) => ({})
+const mapStateToProps = () => ({})
 
 export default connect(mapStateToProps,{ logInIfFetchUser })(SignIn)
