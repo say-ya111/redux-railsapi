@@ -7,7 +7,7 @@ import { connectRouter } from 'connected-react-router'
 const initialState = {
   userState: {
     name: '',
-    isLoggedIn: true
+    isLoggedIn: false
   },
   counterState: [
     {
