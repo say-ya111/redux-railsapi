@@ -17,6 +17,9 @@ import { store, history } from './modules/Store'
 // store.dispatch(decrement())
 // store.dispatch(decrement())
 
+// import { logout } from './modules/ActionCreater'
+// store.dispatch(logout())
+
 
 
 

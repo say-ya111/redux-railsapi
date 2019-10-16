@@ -1,4 +1,4 @@
-import { Action, LOGIN, INCREMENT, DECREMENT } from './ActionTypes'
+import { Action, LOGIN, LOGOUT, INCREMENT, DECREMENT } from './ActionTypes'
 import { combineReducers } from 'redux'
 import { History } from 'history'
 import { connectRouter } from 'connected-react-router'
@@ -7,7 +7,7 @@ import { connectRouter } from 'connected-react-router'
 const initialState = {
   userState: {
     name: '',
-    isLoggedIn: false
+    isLoggedIn: true
   },
   counterState: [
     {
@@ -29,6 +29,11 @@ export function userReducer(state = initialState.userState, action: Action): use
       return {
         name: action.name,
         isLoggedIn: !!action.name.trim()
+      }
+    case LOGOUT:
+      return {
+        name: '',
+        isLoggedIn: false
       }
     default:
       return state;

@@ -2,7 +2,7 @@ import axios from 'axios'
 import { Action } from 'redux'
 import { ThunkAction } from "redux-thunk"
 import { push } from 'connected-react-router'
-import { LOGIN, INCREMENT, DECREMENT } from './ActionTypes'
+import { LOGIN, LOGOUT, INCREMENT, DECREMENT } from './ActionTypes'
 import { AppState } from './Reducers'
 
 
@@ -24,6 +24,12 @@ export const logInIfFetchUser = (
       console.log(`${email}, ${password}`, response.data)
       dispatch(push('/count'))
     })
+}
+
+export const logout = () => {
+  return {
+    type: 'LOGOUT' as typeof LOGOUT,
+  }
 }
 
 //counter

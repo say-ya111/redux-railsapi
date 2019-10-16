@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { NavLink } from "react-router-dom";
 import { /*AppState,*/ CounterType } from '../../modules/Reducers'
 import { CountHeader } from './Header'
+import Logout from '../Logout'
 
 type HistoryListProps = {
   name: string,
@@ -26,11 +27,13 @@ const HistoryList: React.SFC<HistoryListProps> = props => {
     }
   })
   return(
-    <div>
+    <div style={{whiteSpace: 'pre-line'}}>
       <CountHeader userName={props.name} number={props.counterState[props.counterState.length -1].number} />
       <h1>検索履歴一覧</h1>
       <NavLink to='/count'>TOP</NavLink>
       {list}
+      {'\n'}
+      <Logout />
     </div>
   )
 }

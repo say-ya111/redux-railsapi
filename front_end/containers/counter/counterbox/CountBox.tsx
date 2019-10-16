@@ -5,8 +5,9 @@ import { NavLink } from "react-router-dom";
 import { /*AppState,*/ CounterType } from '../../../modules/Reducers'
 import { CountHeader } from '../Header'
 import { AddButton } from './Add'
+import Logout from '../../Logout'
 import { ReduceButton } from './Reduce'
-import { increment, decrement } from '../../../modules/ActionCreater'
+import { increment, decrement, logout } from '../../../modules/ActionCreater'
 
 
 type CountProps = {
@@ -14,7 +15,8 @@ type CountProps = {
   counterState: Array<CounterType>,
   path: string
   increment: typeof increment,
-  decrement: typeof decrement
+  decrement: typeof decrement,
+  logout: typeof logout
 }
 
 type CountState = {
@@ -52,6 +54,8 @@ class Count extends React.Component<CountProps, CountState> {
         {renderButton}
         {'\n'}
         <NavLink to='/history'>検索履歴一覧</NavLink>
+        {'\n'}
+        <Logout />
       </div>
     )
   }
@@ -64,7 +68,8 @@ const mapStateToProps = (state: any) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   increment: () => {dispatch(increment())},
-  decrement: () => {dispatch(decrement())}
+  decrement: () => {dispatch(decrement())},
+  logout: () => {dispatch(logout())}
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Count)

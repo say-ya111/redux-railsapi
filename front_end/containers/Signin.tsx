@@ -4,8 +4,7 @@ import { logInIfFetchUser } from '../modules/ActionCreater'
 
 
 type SignInProps = {
-  logInIfFetchUser: any
-  name: any
+  logInIfFetchUser: typeof logInIfFetchUser
 }
 class SignIn extends React.Component<SignInProps> {
   render(){
@@ -15,7 +14,6 @@ class SignIn extends React.Component<SignInProps> {
     return(
       <div>
         <h1>サインイン</h1>
-        <p>{this.props.name}</p>
         <form onSubmit={(e) => {
           e.preventDefault()
           this.props.logInIfFetchUser(email.value, password.value)
@@ -28,7 +26,5 @@ class SignIn extends React.Component<SignInProps> {
     )
   }
 }
-
-
 
 export default connect(null,{ logInIfFetchUser })(SignIn)
