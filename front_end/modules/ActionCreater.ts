@@ -18,9 +18,10 @@ export const logInIfFetchUser = (
   email: string,
   password: string
 ): ThunkAction<void, AppState, null, Action<string>> => async dispatch => {
-  axios.get(`http://localhost:8080/api/?email=${email}&password=${password}`)
+  axios.get(`http://localhost:8080/api/user/?email=${email}\&password=${password}`)
     .then((response) => {
-      dispatch(logIn(response.data[0].name))
+      dispatch(logIn(response.data.name))
+      console.log(`${email}, ${password}`, response.data)
       dispatch(push('/count'))
     })
 }

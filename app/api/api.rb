@@ -12,7 +12,7 @@ class API < Grape::API
     requires :email
     requires :password
   end
-  get '/?email=:email&password=:password' do
+  get '/user' do
     @user = User.find_by(email:params[:email], password:params[:password])
     present @user, with: UserEntity
   end

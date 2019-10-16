@@ -30,6 +30,5 @@ class SignIn extends React.Component<SignInProps> {
 }
 
 
-const mapStateToProps = () => ({})
 
-export default connect(mapStateToProps,{ logInIfFetchUser })(SignIn)
+export default connect(null,{ logInIfFetchUser })(SignIn)

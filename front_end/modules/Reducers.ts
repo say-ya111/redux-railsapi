@@ -7,7 +7,8 @@ import { connectRouter } from 'connected-react-router'
 const initialState = {
   userState: {
     name: '',
-    isLoggedIn: false},
+    isLoggedIn: false
+  },
   counterState: [
     {
       number: 0,
@@ -27,7 +28,7 @@ export function userReducer(state = initialState.userState, action: Action): use
     case LOGIN:
       return {
         name: action.name,
-        isLoggedIn: true
+        isLoggedIn: !!action.name.trim()
       }
     default:
       return state;
