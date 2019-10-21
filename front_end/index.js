@@ -21,10 +21,6 @@ import { store, history } from './modules/Store'
 // store.dispatch(logout())
 
 
-
-
-console.log(store.getState())
-
 ReactDOM.render(
   <Provider store={store}>
     <App history={history}/>
