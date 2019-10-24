@@ -3,7 +3,7 @@ import * as React from 'react'
 
 type CountHeaderProps = {
   userName: string,
-  number: any
+  number: number
 }
 
 export const CountHeader: React.SFC<CountHeaderProps> = props => {
