@@ -15,13 +15,13 @@ const HistoryList: React.SFC<HistoryListProps> = props => {
     if(item.action === 'increment') {
       return (
         <p key={index} style={{margin: 0}}>
-          {item.timeStamp.getHours()}時{item.timeStamp.getMinutes()}分足したにゃ
+          {item.timeStamp.getHours()}時{item.timeStamp.getMinutes()}分足しました
         </p>
       )
     } else if(item.action === 'decrement') {
       return (
         <p key={index} style={{margin: 0}}>
-          {item.timeStamp.getHours()}時{item.timeStamp.getMinutes()}分引いたにゃ
+          {item.timeStamp.getHours()}時{item.timeStamp.getMinutes()}分引きました
         </p>
       )
     }

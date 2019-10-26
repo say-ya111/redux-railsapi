@@ -15,9 +15,9 @@ export const ReduceButton: React.SFC<ReduceButtonProps> = props =>  {
   }
   return(
     <div style={{whiteSpace: 'pre-line'}}>
-      <span>REDUCE</span><button onClick={decrement}>引くにゃ</button>
+      <span>REDUCE</span><button onClick={decrement}>引く</button>
       {'\n'}
-      <button onClick={switchMode}>足し算ボタンを出現させるにゃー</button>
+      <button onClick={switchMode}>足し算ボタンを出現させます</button>
     </div>
   )
 }

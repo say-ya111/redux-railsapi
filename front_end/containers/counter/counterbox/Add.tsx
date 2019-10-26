@@ -16,9 +16,9 @@ export const AddButton: React.SFC<AddButtonProps> = props =>  {
   }
   return(
     <div style={{whiteSpace: 'pre-line'}}>
-      <span>ADD</span><button onClick={increment}>足すにゃ</button>
+      <span>ADD</span><button onClick={increment}>足す</button>
       {'\n'}
-      <button onClick={switchMode}>引き算ボタンを出現させるにゃー</button>
+      <button onClick={switchMode}>引き算ボタンを出現させます</button>
     </div>
   )
 }
